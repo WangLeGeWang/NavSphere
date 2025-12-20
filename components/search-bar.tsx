@@ -45,7 +45,7 @@ export function SearchBar({ onSearch, searchResults, searchQuery, siteConfig }: 
         setIsFocused(false)
         inputRef.current?.blur()
       }
-      
+
       if ((event.metaKey || event.ctrlKey) && event.key === 'k') {
         event.preventDefault()
         inputRef.current?.focus()
@@ -60,8 +60,8 @@ export function SearchBar({ onSearch, searchResults, searchQuery, siteConfig }: 
   const highlightText = (text: string) => {
     if (!searchQuery) return text
     const parts = text.split(new RegExp(`(${searchQuery})`, 'gi'))
-    return parts.map((part, i) => 
-      part.toLowerCase() === searchQuery.toLowerCase() ? 
+    return parts.map((part, i) =>
+      part.toLowerCase() === searchQuery.toLowerCase() ?
         <span key={i} className="bg-yellow-200 dark:bg-yellow-800">{part}</span> : part
     )
   }
@@ -76,7 +76,7 @@ export function SearchBar({ onSearch, searchResults, searchQuery, siteConfig }: 
     if (itemWithHref.href) {
       const linkTarget = siteConfig?.navigation?.linkTarget || '_blank'
       if (linkTarget === '_self') {
-        window.location.href = itemWithHref.href
+        window.location.assign(itemWithHref.href)
       } else {
         window.open(itemWithHref.href, linkTarget)
       }

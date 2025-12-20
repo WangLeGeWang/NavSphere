@@ -11,7 +11,7 @@ export function ThemeToggle() {
 
   // 等待客户端挂载完成
   useEffect(() => {
-    setMounted(true)
+    setTimeout(() => setMounted(true), 0)
   }, [])
 
   // 在客户端挂载完成前不渲染任何内容
